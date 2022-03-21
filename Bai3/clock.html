@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sử dụng đối tượng window</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
+        
+        body {
+            background-image: linear-gradient(45deg, #333, #ccc);
+            background-repeat: no-repeat;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .box {
+            height: 100vh;
+            background-color: #C3E5AE;
+        }
+
+        .table {
+            width: 500px;
+            border: 2px solid #333;
+            background-color: #39AEA9;
+            border-radius: 10px;
+            height: 150px;
+        }
+
+        .table__head {
+            height: 40%;
+            border-bottom: 1px solid rgb(71, 59, 59);
+        }
+
+        .thead {
+            flex: 1;
+            text-align: center;
+            line-height: calc(150px * 40 / 100);
+        }
+
+        .thead + .thead,
+        .tbody + .tbody {
+            border-left: 1px solid rgb(116, 108, 108);
+        }
+
+        .table__body {
+            height: 60%;
+        }
+
+        .tbody {
+            text-align: center;
+            line-height: calc(150px * 60 / 100);
+            flex: 1;
+        }
+
+        .tbody--clock {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="box center">
+        <div class="table">
+            <div class="table__head row">
+                <div class="thead">
+                    <h2>Thời gian</h2>
+                </div>
+                <div class="thead">
+                    <h2>Lời chào</h2>
+                </div>
+            </div>
+
+            <div class="table__body row">
+                <div class="tbody tbody--clock">
+                        <img id="01" src="./BTTH_icons/00.gif" alt="">
+                        <img id="02" src="./BTTH_icons/00.gif" alt="">
+                        <img id="03" src="./BTTH_icons/haicham.gif" alt="">
+                        <img id="04" src="./BTTH_icons/00.gif" alt="">
+                        <img id="05" src="./BTTH_icons/00.gif" alt="">
+                        <img id="06" src="./BTTH_icons/haicham.gif" alt="">
+                        <img id="07" src="./BTTH_icons/00.gif" alt="">
+                        <img id="08" src="./BTTH_icons/00.gif" alt="">
+                </div>
+                <div class="tbody tbody--greetings">
+                    <h3 id="greetings">Chào buổi sáng</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var size = 16;
+        var i = 0;
+        var color = ["red", "black"]
+        function startTime() {
+            var today = new Date();
+
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            
+            // Lời chào
+            var greeting = document.getElementById("greetings")
+            if (0 <= h && h < 12) {
+                greeting.innerText = "Chào buổi sáng"
+            } else if (12 <= h && h < 17) {
+                greeting.innerText = "Chào buổi chiều"
+            } else {
+                greeting.innerText = "Chào buổi tối"
+            }
+
+            // Đổi màu, tăng kích thước chữ
+            if (i === 1) {
+                greeting.style.color = color[0];
+                i = 0;
+            } else {
+                greeting.style.color = color[1];
+                i = 1;
+            }
+
+            if (size < 30) {
+                greeting.style.fontSize = `${size}px`;
+            }
+            else {
+                size = 16;
+            }
+            size++;
+            
+
+            // Thay đổi giờ
+            var h1 = (Math.floor(h / 10)).toString();
+            var h2 = (h % 10).toString();
+
+            var m1 = (Math.floor(m / 10)).toString();
+            var m2 = (m % 10).toString();
+
+            var s1 = (Math.floor(s / 10)).toString();
+            var s2 = (s % 10).toString();
+
+            var img1 = document.getElementById("01")
+            img1.setAttribute("src", `./BTTH_icons/${"0" + h1}.gif`)
+            var img2 = document.getElementById("02")
+            img2.setAttribute("src", `./BTTH_icons/${"0" + h2}.gif`)
+
+            var img4 = document.getElementById("04")
+            img4.setAttribute("src", `./BTTH_icons/${"0" + m1}.gif`)
+            var img5 = document.getElementById("05")
+            img5.setAttribute("src", `./BTTH_icons/${"0" + m2}.gif`)
+
+            var img7 = document.getElementById("07")
+            img7.setAttribute("src", `./BTTH_icons/${"0" + s1}.gif`)
+            var img8 = document.getElementById("08")
+            img8.setAttribute("src", `./BTTH_icons/${"0" + s2}.gif`)
+
+            // Gọi hàm để lặp lại tăng thời gian
+        }
+        
+        setInterval(() => {
+            startTime();
+        }, 1000);
+
+    </script>
+</body>
+</html
