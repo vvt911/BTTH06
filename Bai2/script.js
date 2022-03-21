@@ -7,7 +7,7 @@ let index = document.getElementById('index')
 let value = document.getElementById('value')
 let addBtn = document.getElementById('addBtn')
 
-a = []
+var a = []
 function tao_mang() {
     a = []
     for (let i = 0; i < Math.floor(Math.random() * 10) + 10; i++) {
@@ -37,8 +37,10 @@ sap_xep()
 addBtn.onclick = function() {
     let i = index.value
     let v = value.value
-    a.splice(i, 0, v)
-    arrSorted.innerHTML = a
+    if (i !== '' && v !== '') {
+        a.splice(i, 0, v)
+        arrSorted.innerHTML = a
+    }
 }
 
 
