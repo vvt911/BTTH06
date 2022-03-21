@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sử dụng đối tượng array</title>
+
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        table{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        table {
+            min-width: 500px;
+        }
+        th, tr{
+            height: 40px;
+        }
+        table thead .btn {
+            width: 100px;
+        }
+        .container {
+            display: inline-block;
+        }
+        input[type='text'] {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Thao tác trên mảng</h1>
+
+    <form action="">
+        <table>
+            <thead>
+                <th  class="btn">
+                    <button type="button" id="createArrBtn" onclick="tao_mang()">Tạo mảng</button>
+                </th>
+                <th id="arr"></th>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td colspan="4" id="arrSorted"></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="container">
+                            <input type="radio" id="asc" name="sort" value="">
+                            <label for="asc">Sắp xếp tăng dần</label><br>
+                        </div>
+                        <div class="container">
+                            <input type="radio" id="desc" name="sort" value="">
+                            <label for="desc">Sắp xếp giảm dần</label><br>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="container">
+                            <label for="">Thêm vào vị trí</label>
+                            <input type="text" id="index" required>
+                        </div>
+                        <div class="container">
+                            <label for="">Giá trị</label>
+                            <input type="text" id="value" required>
+                        </div>
+                        <button type="button" id="addBtn">Thêm</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <script src="./script.js"></script>
+</body>
+
+</html>
